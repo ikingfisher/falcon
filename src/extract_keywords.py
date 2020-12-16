@@ -87,6 +87,7 @@ def tf_idf(wordlis, filelist, corpuslist):
 
         # 计算IDF：log(语料库的文档总数/(包含该词的文档数+1))
         idf = math.log(len(filelist)/float(wordinfilecount(str(i), corpuslist)+1))
+        # print('tf: {} idf: {}'.format(tf, idf))
 
         # 计算TF-IDF
         tfidf = tf*idf
@@ -122,15 +123,15 @@ def wry(txt, path):  # 写入txt文件
 
 # 总入口函数
 def process():
-    swpath = r'stop_words_eng.txt'#停用词表路径
+    swpath = r'./stop_words_eng.txt' # 停用词表路径
     swlist = getstopword(swpath)  # 获取停用词表列表
-    #print(swlist)
+    # print(swlist)
     filepath = r'./data'
     filelist = fun(filepath)
     corpuslist = corpus(filelist, swlist)
-    #print(corpuslist)
+    # print(corpuslist)
     outall = ''
-    wrypath = r'TFIDF2.txt'
+    wrypath = r'./TFIDF2.txt'
     for i in filelist:
         afterswlis = getridofsw(participles(read(str(i))), swlist)  # 获取每一篇已经去除停用的词表
         tfidfdic = tf_idf(afterswlis, filelist, corpuslist) # 计算TF-IDF
