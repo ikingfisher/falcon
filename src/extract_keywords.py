@@ -123,7 +123,7 @@ def wry(txt, path):  # 写入txt文件
 
 # 总入口函数
 def process():
-    swpath = r'./stop_words_eng.txt' # 停用词表路径
+    swpath = r'./template/stop_words_eng.txt' # 停用词表路径
     swlist = getstopword(swpath)  # 获取停用词表列表
     # print(swlist)
     filepath = r'./data'
